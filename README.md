@@ -1,7 +1,70 @@
 # Water-Quality-Prediction-AICTE
-I have tried to execute a model for Water Quality Prediction on Google Colab based on a dataset provided by the mentor.
-Here, we have imported pandas, numpy, matplot, seaborn, scikit-learn. We are going to import MultiOutputRegressor, RandomForestRegressor, train_test_split, mean_squared_error, re_score
-The data was loaded, we have summarised the data by df.info() then we got to know the statistics of the data(count,min,max,mean,std)
-To find the missing values we used df.isnull() and summed up to find the count of missing values
-Since the date column is in object format we are going to fix it into datetime format
-After sorting the data by id and date, we've extracted the year and month and defined the list of Pollutants
+
+
+This project predicts pollution levels (O₂, NO₃, NO₂, SO₄, PO₄, CL) using historical station data. The model is trained using Random Forest with a multi-output regression approach.
+
+**Dataset**
+From 2000 to 2021
+
+Columns include:
+
+id (station ID), date, and pollutants like O2, NO3, etc.
+
+Additional columns year and month were extracted from the date.
+
+**Key Steps**
+
+Data Cleaning
+
+Converted date column to datetime.
+
+Removed rows with missing pollutant values.
+
+**Feature & Target Selection**
+
+Features: id, year
+
+Targets: O2, NO3, NO2, SO4, PO4, CL
+
+**One-Hot Encoding**
+
+Encoded id column using pd.get_dummies.
+
+**Train-Test Split**
+
+80% training, 20% testing using train_test_split.
+
+**Model Training**
+
+RandomForestRegressor wrapped in MultiOutputRegressor.
+
+**Evaluation**
+
+Evaluated using MSE and R² score for each pollutant.
+
+Plotted Actual vs Predicted graphs.
+
+**Prediction**
+
+Predicted future pollution levels for given station id and year.
+
+**Saving the Model**
+
+Saved trained model (pollution_model.pkl) and column structure (model_columns.pkl) using joblib.
+
+## Model Link
+
+```https://drive.google.com/file/d/1wqhMvZYzvWedPVikvmFYwTh5_zogFjeh/view?usp=sharing```
+
+**Requirements**
+Python 3.x
+
+- pandas, numpy
+
+- matplotlib, seaborn
+
+- scikit-learn
+
+- joblib
+
+
